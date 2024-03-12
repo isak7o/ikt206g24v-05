@@ -1,20 +1,15 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0.2 AS base
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0.2 AS build
-WORKDIR /src
-COPY ["MyAspNetApp/MyAspNetApp.csproj", "MyAspNetApp/"]
-RUN dotnet restore "MyAspNetApp/MyAspNetApp.csproj"
-COPY . .
-WORKDIR "/src/MyAspNetApp"
-RUN dotnet build "MyAspNetApp.csproj" -c Release -o /app/build
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-FROM build AS publish
-RUN dotnet publish "MyAspNetApp.csproj" -c Release -o /app/publish
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
 
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "MyAspNetApp.dll"]
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "YourAppName.dll"]

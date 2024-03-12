@@ -1,0 +1,3 @@
+isakp.me {
+  reverse_proxy web:80
+}
