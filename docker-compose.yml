@@ -5,7 +5,7 @@ services:
     depends_on:
       - db
     environment:
-      - ConnectionStrings__DefaultConnection=Server=db;Port=5432;Database=isakdb;User Id=isak7o;Password=isakpassword;
+      - ConnectionStrings__DefaultConnection=host=db;Port=5432;Database=isakdb;User Id=isak7o;Password=isakpassword;
     networks:
       - app-network
 

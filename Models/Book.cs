@@ -6,6 +6,13 @@ namespace Example.Models
     {
         public Book() {}
 
+        public Book(string title, string summary, DateTime published)
+        {
+            Title = title;
+            Summary = summary;
+            Published = DateTime.SpecifyKind(published, DateTimeKind.Utc);
+        }
+
         public int Id { get; set; }
 
         [Required]

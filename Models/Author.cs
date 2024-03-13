@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Example.Models
@@ -6,12 +8,12 @@ namespace Example.Models
     public class Author
     {
         public Author() {}
-        
+
         public Author(string firstName, string lastName, DateTime birthdate)
         {
             FirstName = firstName;
             LastName = lastName;
-            Birthdate = birthdate;
+            Birthdate = DateTime.SpecifyKind(birthdate, DateTimeKind.Utc);
         }
 
         public int Id { get; set; }
