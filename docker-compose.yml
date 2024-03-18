@@ -2,6 +2,8 @@ version: '3.8'
 services:
   web:
     build: .
+    ports:
+      - "8080:8080"
     depends_on:
       - db
     environment:
@@ -27,6 +29,8 @@ services:
       - "443:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
     depends_on:
       - web
     networks:
@@ -38,3 +42,5 @@ networks:
 
 volumes:
   postgres-data: {}
+  caddy_data: {} 
+  caddy_config: {} 

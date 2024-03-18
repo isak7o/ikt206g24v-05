@@ -265,3 +265,4 @@ C:\Users\Isakp\ikt206g24v-05\bin\Debug\net8.0\Example.runtimeconfig.json
 C:\Users\Isakp\ikt206g24v-05\bin\Debug\net8.0\Example.pdb
 C:\Users\Isakp\ikt206g24v-05\obj\Debug\net8.0\Example.genruntimeconfig.cache
 C:\Users\Isakp\ikt206g24v-05\obj\Debug\net8.0\ref\Example.dll
+C:\Users\Isakp\ikt206g24v-05\obj\Debug\net8.0\Example.sourcelink.json
